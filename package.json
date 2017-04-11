@@ -1,0 +1,14 @@
+{
+  "name": "my-project-take-2",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "devDependencies": {
+    "lite-server": "^2.3.0"
+  },
+  "dependencies": {
+    "angular": "1.6.0"
+  }
+}
