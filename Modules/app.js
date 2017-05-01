@@ -71,12 +71,13 @@
         delete vm.newPost
       }
       vm.createNewComment= function(post){
-        var cObj = {comment: vm.newComment}
+        console.log(vm);
+        console.log(vm.newCommentForm);
 
-        console.log("linked!", post.comments)
+        var cObj = {comment: post.newComment}
         post.comments.push(cObj);
-        console.log(vm.posts);
-        delete vm.newComment;
+
+        delete post.newComment
       }
 
       vm.increment = function(post) {

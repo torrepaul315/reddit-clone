@@ -150,10 +150,9 @@
             </a>
           </div>
           <!-- come back to validating the comment!  -->
+          <!-- figuring out the set pristine on the comment box! ng-submit was in the div right below, trying to move it down to the actual form!  -->
           <div class="row"
-          ng-show="postObj.commentsVis"
-          ng-submit="$ctrl.createNewComment(postObj)"
-          >
+          ng-show="postObj.commentsVis">
             <div class="col-md-8">
               <hr>
             <div ng-repeat="commentObj in postObj.comments">
@@ -161,9 +160,14 @@
                 {{commentObj.comment}}
               </p>
             </div>
-              <form class="form-inline">
+            <!-- Now! the add comment is working and validates for SOME input, but it accepts ANY blank input.....tweak validation to work better much like the top of the page! -->
+              <form name="$ctrl.newCommentForm{{$index}}"
+              class="form-inline"
+              ng-submit="$ctrl.createNewComment(postObj)"
+              >
                 <div class="form-group">
                   <input
+                  ng-required="true"
                   id="newComment"
                   ng-model="postObj.newComment"
                   name="newComment"
