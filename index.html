@@ -19,14 +19,16 @@
     <!-- Moment -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
     <!-- moment for Angular -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.1/angular-moment.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.1/angular-moment.js"></script> -->
+
+    <base href="/">
 
   </head>
   <body>
 
     <pauls-reddit></pauls-reddit>
-    <span am-time-ago="publishedAt"></span>
-
+    <!-- <span am-time-ago="publishedAt"></span> -->
+    <ui-view></ui-view>
 
     <script src="/node_modules/angular/angular.js"></script>
     <!-- my module! -->
@@ -46,6 +48,7 @@
     <!-- Material Design Bootstrap JavaScript -->
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js'>
     </script>
-
+    <!-- UI router! -->
+    <script src="https://unpkg.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.js"></script>
   </body>
 </html>

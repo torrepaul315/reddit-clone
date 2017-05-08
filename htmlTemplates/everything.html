@@ -114,7 +114,7 @@
   <div class="col-md-12">
     <div class="well">
       <div class="row">
-      <div class="col-md-2 col-xs-2">
+      <div class="col-md-2 col-sm-2 col-xs-2">
         <img ng-src="{{postObj.image}}">
         </div>
         <div class="media-body">
@@ -138,29 +138,38 @@
             {{postObj.body}}
           </p>
           <div>
-            Posted On:{{postObj.time}}
+            Posted On: {{postObj.time}}
             |
             <a ng-click="$ctrl.toggleComments(postObj)">
-            <i class="glyphicon glyphicon-comment"></i>       Some comments
+            <i class="glyphicon  glyphicon-comment"></i>
+            <ng-pluralize count="postObj.comments.length"
+            when="{'0': 'be the first      person to comment!',
+            '1': '1 comment',
+            'other': '{} comments'}">
+            </ng-pluralize>
             </a>
           </div>
           <!-- come back to validating the comment!  -->
+          <!-- figuring out the set pristine on the comment box! ng-submit was in the div right below, trying to move it down to the actual form!  -->
           <div class="row"
-          ng-show="postObj.commentsVis"
-          ng-submit="$ctrl.createNewComment(postObj)"
-          >
-            <div class="col-md-offset-1">
+          ng-show="postObj.commentsVis">
+            <div class="col-md-8">
               <hr>
             <div ng-repeat="commentObj in postObj.comments">
               <p>
                 {{commentObj.comment}}
               </p>
             </div>
-              <form class="form-inline">
+            <!-- Now! the add comment is working and validates for SOME input, but it accepts ANY blank input.....tweak validation to work better much like the top of the page! -->
+              <form name="$ctrl.newCommentForm{{$index}}"
+              class="form-inline"
+              ng-submit="$ctrl.createNewComment(postObj)"
+              >
                 <div class="form-group">
                   <input
+                  ng-required="true"
                   id="newComment"
-                  ng-model="$ctrl.newComment"
+                  ng-model="postObj.newComment"
                   name="newComment"
                   class="form-control">
                 </div>
